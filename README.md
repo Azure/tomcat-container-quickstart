@@ -8,9 +8,28 @@ We provide a WAR build of [Spring Pet Clinic](https://github.com/spring-projects
 
 ### Building and testing locally
 
-If you have Docker CLI installed locally, you can build a docker image by running `docker build . -t quickstart` from the root of this repository.
+If you have Docker CLI installed locally, you can run this QuickStart on your machine:
 
-You can then execute the image by typing `docker run -p8080:8080 -d quickstart`. Once the container is running, navigate to `http://localhost:8080` in [your favorite browser](https://www.microsoft.com/edge), and you should see the Petclinic application come up.
+1. Clone the repository and navigate into the root of the repository:
+
+    ```bash
+    git clone https://github.com/Azure/tomcat-container-quickstart.git
+    cd tomcat-container-quickstart
+    ```
+
+1. Build the docker image: 
+
+    ```bash
+    docker build . -t quickstart`
+    ```
+
+1. Run the image:
+
+    ```bash
+    docker run -p8080:8080 -d quickstart
+    ```
+
+    Once the container is running, navigate to `http://localhost:8080` in [your favorite browser](https://www.microsoft.com/edge). You should see the Petclinic application come up.
 
 ### Building and testing on Azure
 
@@ -18,7 +37,12 @@ Alternatively, you can build and test the image entirely on Azure. These steps c
 
 1. [Create an Azure Container Registry](https://portal.azure.com/#create/Microsoft.ContainerRegistry). Be sure to enable the admin user.
 
-1. Clone the repository and navigate into the root of the repository.
+1. Clone the repository and navigate into the root of the repository:
+
+```bash
+    git clone https://github.com/Azure/tomcat-container-quickstart.git
+    cd tomcat-container-quickstart
+```
 
 1. Once the Azure Container Registry instance is created, run the following command, where `${REGISTRY_NAME}` is the name of the Azure Container Registry you just created:
 
@@ -31,10 +55,13 @@ Alternatively, you can build and test the image entirely on Azure. These steps c
 1. Once the image build has completed, run the following command. It will deploy the image onto an Azure Container Instance. `${RESOURCE_GROUP}` should be the name of a resource group in your azure subscription. `${REGISTRY_NAME}` should be the same as above
 
     ```bash
-    az container create -g ${RESOURCE_GROUP} -n ${REGISTRY_NAME} --image "${REGISTRY_NAME}.azurecr.io/quickstart"  \
-        --registry-password "$(az acr credential show -n $REGISTRY_NAME --query "passwords[0].value" -o tsv)" \
-        --registry-username "${REGISTRY_NAME}" --ip-address Public --ports 8080 \
-        --query "ipAddress.ip"
+    az container create -g ${RESOURCE_GROUP} -n ${REGISTRY_NAME} \
+      --image "${REGISTRY_NAME}.azurecr.io/quickstart"  \
+      --registry-password "$(az acr credential show -n $REGISTRY_NAME --query "passwords[0].value" -o tsv)" \
+      --registry-username "${REGISTRY_NAME}" \
+      --ip-address Public \
+      --ports 8080 \
+      --query "ipAddress.ip"
     ```
 
     When the command completes, it will display an IP address. Navigate to `http://<The IP Address>:8080` in your browser, and you should see the home page of the deployed web application.
