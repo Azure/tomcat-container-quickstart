@@ -12,7 +12,7 @@ You can then execute the image by typing `docker run -p8080:8080 -d quickstart`.
 
 ### Building and testing on Azure
 
-Alternatively, you can build and test the image in Azure. These steps can be performed from [Azure CloudShell](https://shell.azure.com) or from any machine with [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) installed.
+Alternatively, you can build and test the image entirely on Azure. These steps can be performed from [Azure CloudShell](https://shell.azure.com) or from any machine with [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) installed.
 
 1. [Create an Azure Container Registry](https://portal.azure.com/#create/Microsoft.ContainerRegistry). Be sure to enable the admin user.
 
