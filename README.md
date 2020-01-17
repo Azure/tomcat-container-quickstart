@@ -4,11 +4,13 @@ This repository contains artifacts to help you get started running Tomcat applic
 
 ## Getting started
 
+We provide a WAR build of [Spring Pet Clinic](https://github.com/spring-projects/spring-petclinic) in ROOT.war as a sample application. By following the steps below, you can see this QuickStart in action without the need to provide your own applciation or to make any modifications.
+
 ### Building and testing locally
 
 If you have Docker CLI installed locally, you can build a docker image by running `docker build . -t quickstart` from the root of this repository.
 
-You can then execute the image by typing `docker run -p8080:8080 -d quickstart`. Once the container is running, navigate to `http://localhost:8080` in [your favorite browser](https://www.microsoft.com/edge), and you should see a startup page.
+You can then execute the image by typing `docker run -p8080:8080 -d quickstart`. Once the container is running, navigate to `http://localhost:8080` in [your favorite browser](https://www.microsoft.com/edge), and you should see the Petclinic application come up.
 
 ### Building and testing on Azure
 
@@ -20,7 +22,7 @@ Alternatively, you can build and test the image entirely on Azure. These steps c
 
 1. Once the Azure Container Registry instance is created, run the following command, where `${REGISTRY_NAME}` is the name of the Azure Container Registry you just created:
 
-    ```bash    
+    ```bash
     az acr build -r ${REGISTRY_NAME} -t "${REGISTRY_NAME}.azurecr.io/quickstart" .
     ```
 
