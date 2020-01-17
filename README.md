@@ -4,9 +4,44 @@ This repository contains artifacts to help you get started running Tomcat applic
 
 ## Getting started
 
+### Building and testing locally
+
 If you have Docker CLI installed locally, you can build a docker image by running `docker build . -t quickstart` from the root of this repository.
 
-You can then execute the image by typing `docker run -p8080:8080 -d quickstart'. Once the container is running, navigate to `http://localhost:8080` in [your favorite browser](https://www.microsoft.com/edge), and you should see a startup page.
+You can then execute the image by typing `docker run -p8080:8080 -d quickstart`. Once the container is running, navigate to `http://localhost:8080` in [your favorite browser](https://www.microsoft.com/edge), and you should see a startup page.
+
+### Building and testing on Azure
+
+Alternatively, you can build and test the image in Azure. These steps can be performed from [Azure CloudShell](https://shell.azure.com) or from any machine with [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) installed.
+
+1. [Create an Azure Container Registry](https://portal.azure.com/#create/Microsoft.ContainerRegistry). Be sure to enable the admin user.
+
+1. Clone the repository and navigate into the root of the repository.
+
+1. Once the Azure Container Registry instance is created, run the following command, where `${REGISTRY_NAME}` is the name of the Azure Container Registry you just created:
+
+    ```bash    
+    az acr build -r ${REGISTRY_NAME} -t "${REGISTRY_NAME}.azurecr.io/quickstart" .
+    ```
+
+    The Azure Container Registry will now build the docker image on its own server.
+
+1. Once the image build has completed, run the following command. It will deploy the image onto an Azure Container Instance. `${RESOURCE_GROUP}` should be the name of a resource group in your azure subscription. `${REGISTRY_NAME}` should be the same as above
+
+    ```bash
+    az container create -g ${RESOURCE_GROUP} -n ${REGISTRY_NAME} --image "${REGISTRY_NAME}.azurecr.io/quickstart"  \
+        --registry-password "$(az acr credential show -n $REGISTRY_NAME --query "passwords[0].value" -o tsv)" \
+        --registry-username "${REGISTRY_NAME}" --ip-address Public --ports 8080 \
+        --query "ipAddress.ip"
+    ```
+
+    When the command completes, it will display an IP address. Navigate to `http://<The IP Address>:8080` in your browser, and you should see the home page of the deployed web application.
+
+    To terminate the container instance, run
+
+    ```bash
+    az container delete -g ${RESOURCE_GROUP} -n ${REGISTRY_NAME} --yes
+    ```
 
 ## Contributing
 
