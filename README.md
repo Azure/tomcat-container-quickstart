@@ -4,7 +4,7 @@ This repository contains artifacts to help you get started running Tomcat applic
 
 ## Getting started
 
-We provide a WAR build of [Spring Pet Clinic](https://github.com/spring-projects/spring-petclinic) in ROOT.war as a sample application. By following the steps below, you can see this QuickStart in action without the need to provide your own applciation or to make any modifications.
+We provide a WAR build of [Spring Pet Clinic](https://github.com/spring-petclinic/spring-framework-petclinic) in ROOT.war as a sample application. By following the steps below, you can see this QuickStart in action without the need to provide your own applciation or to make any modifications.
 
 ### Building and testing locally
 
@@ -20,7 +20,7 @@ If you have Docker CLI installed locally, you can run this QuickStart on your ma
 1. Build the docker image:
 
     ```bash
-    docker build . -t tomcat`
+    docker build . -t tomcat
     ```
 
 1. Run the image:
