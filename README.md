@@ -1,5 +1,14 @@
+# Tomcat on Containers QuickStart
 
-# Contributing
+This repository contains artifacts to help you get started running Tomcat applications on Azure container platforms, such as the Azure Kubernetes Service (AKS). It is intended to accompany the [Tomcat to AKS Migration guide](https://docs.microsoft.com/azure/java/migrate-tomcat-to-containers-on-azure-kubernetes-service).
+
+## Getting started
+
+If you have Docker CLI installed locally, you can build a docker image by running `docker build . -t quickstart` from the root of this repository.
+
+You can then execute the image by typing `docker run -p8080:8080 -d quickstart'. Once the container is running, navigate to `http://localhost:8080` in [your favorite browser](https://www.microsoft.com/edge), and you should see a startup page.
+
+## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
