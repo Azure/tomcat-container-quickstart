@@ -17,16 +17,16 @@ If you have Docker CLI installed locally, you can run this QuickStart on your ma
     cd tomcat-container-quickstart
     ```
 
-1. Build the docker image: 
+1. Build the docker image:
 
     ```bash
-    docker build . -t quickstart`
+    docker build . -t tomcat`
     ```
 
 1. Run the image:
 
     ```bash
-    docker run -p8080:8080 -d quickstart
+    docker run -p8080:8080 -d tomcat
     ```
 
     Once the container is running, navigate to `http://localhost:8080` in [your favorite browser](https://www.microsoft.com/edge). You should see the Petclinic application come up.
@@ -47,7 +47,7 @@ Alternatively, you can build and test the image entirely on Azure. These steps c
 1. Once the Azure Container Registry instance is created, run the following command, where `${REGISTRY_NAME}` is the name of the Azure Container Registry you just created:
 
     ```bash
-    az acr build -r ${REGISTRY_NAME} -t "${REGISTRY_NAME}.azurecr.io/quickstart" .
+    az acr build -r ${REGISTRY_NAME} -t "${REGISTRY_NAME}.azurecr.io/tomcat" .
     ```
 
     The Azure Container Registry will now build the docker image on its own server.
@@ -56,7 +56,7 @@ Alternatively, you can build and test the image entirely on Azure. These steps c
 
     ```bash
     az container create -g ${RESOURCE_GROUP} -n ${REGISTRY_NAME} \
-      --image "${REGISTRY_NAME}.azurecr.io/quickstart"  \
+      --image "${REGISTRY_NAME}.azurecr.io/tomcat"  \
       --registry-password "$(az acr credential show -n $REGISTRY_NAME --query "passwords[0].value" -o tsv)" \
       --registry-username "${REGISTRY_NAME}" \
       --ip-address Public \
