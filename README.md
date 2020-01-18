@@ -6,6 +6,17 @@ This repository contains artifacts to help you get started running Tomcat applic
 
 We provide a WAR build of [Spring Pet Clinic](https://github.com/spring-petclinic/spring-framework-petclinic) in ROOT.war as a sample application. By following the steps below, you can see this QuickStart in action without the need to provide your own applciation or to make any modifications.
 
+### Pre-requisites
+
+For running locally:
+
+* [Docker CLI](https://docs.docker.com/install/)
+
+For running on Azure:
+
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
+* [An Azure subscription](https://azure.microsoft.com/free/).
+
 ### Building and testing locally
 
 If you have Docker CLI installed locally, you can run this QuickStart on your machine:
