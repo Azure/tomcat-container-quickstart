@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/java/jdk:8-zulu-alpine
 ARG APP_FILE=ROOT.war
-ARG TOMCAT_VERSION=9.0.30
+ARG TOMCAT_VERSION=9.0.31
 ARG SERVER_XML=server.xml
 ARG LOGGING_PROPERTIES=logging.properties
 ARG CATALINA_PROPERTIES=catalina.properties
