@@ -7,7 +7,7 @@ ARG CATALINA_PROPERTIES=catalina.properties
 ARG TOMCAT_MAJOR=9
 
 # As provided here, only the access log gets written to this location.
-# Mount to a persistant volume to preserve access logs.
+# Mount to a persistent volume to preserve access logs.
 # Modify this value to specify a different log directory.
 # e.g. /home/logs in Azure App Service
 ENV LOG_ROOT=/tomcat_logs
