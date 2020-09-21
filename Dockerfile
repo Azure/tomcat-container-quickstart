@@ -1,10 +1,15 @@
 FROM mcr.microsoft.com/java/jdk:8-zulu-alpine
 ARG APP_FILE=ROOT.war
-ARG TOMCAT_VERSION=9.0.31
+ARG TOMCAT_VERSION=9.0.38
 ARG SERVER_XML=server.xml
 ARG LOGGING_PROPERTIES=logging.properties
 ARG CATALINA_PROPERTIES=catalina.properties
 ARG TOMCAT_MAJOR=9
+
+# As provided here, only the access log gets written to this location.
+# Mount to a persistent volume to preserve access logs.
+# Modify this value to specify a different log directory.
+# e.g. /home/logs in Azure App Service
 ENV LOG_ROOT=/tomcat_logs
 
 ENV PATH /usr/local/tomcat/bin:$PATH
