@@ -1,3 +1,5 @@
+[![.github/workflows/docker-publish.yml](https://github.com/miyaimin/tomcat-container-quickstart/actions/workflows/docker-publish.yml/badge.svg?branch=master&event=check_run)](https://github.com/miyaimin/tomcat-container-quickstart/actions/workflows/docker-publish.yml)
+
 # Tomcat on Containers QuickStart
 
 This repository contains artifacts to help you get started running Tomcat applications on Azure container platforms, such as the Azure Kubernetes Service (AKS). It is intended to accompany the [Tomcat to AKS Migration guide](https://docs.microsoft.com/azure/java/migrate-tomcat-to-containers-on-azure-kubernetes-service).
