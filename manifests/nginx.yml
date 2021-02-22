@@ -3,9 +3,9 @@ kind: Pod
 metadata:
   creationTimestamp: null
   labels:
-    run: ngingx
-  name: ngingx
+    run: nginx
+  name: nginx
 spec:
   containers:
   - image: miyaacr.azurecr.io/example-app
-    name: ngingx
+    name: nginx
